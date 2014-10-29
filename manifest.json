@@ -1,0 +1,25 @@
+{
+  "name" : "TidalWave",
+  "version" : "1.0.1",
+  "description" : "Download from tidal music service",
+  "background" : {
+    "scripts": ["background.js"]
+  },
+  "permissions" : [ "http://*.tidalhifi.com/*", "https://*.tidalhifi.com/*", "webRequest", "webRequestBlocking", "downloads" ],
+  "browser_action": {
+    "default_title": "TidalWave",
+    "default_popup": "popup.html"
+  },
+  "content_scripts" : [
+    {
+      "matches" : [
+         "http://listen.tidalhifi.com/album/*",
+         "https://listen.tidalhifi.com/album/*"
+      ],
+      "js" : [ "jquery-2.1.1.min.js", "album.js" ],
+      "run_at" : "document_idle",
+      "all_frames" : false
+    }
+  ],
+  "manifest_version": 2
+}
